@@ -1,0 +1,94 @@
+{
+    "actorSpecification": 1,
+    "fields": {
+        "url": {
+            "label": "Visited URL",
+            "format": "link"
+        },
+        "mode": {
+            "label": "Mode",
+            "format": "text"
+        },
+        "status": {
+            "label": "HTTP Status",
+            "format": "number"
+        },
+        "dwellTimeSeconds": {
+            "label": "Dwell Time (s)",
+            "format": "number"
+        },
+        "referrer": {
+            "label": "Referrer",
+            "format": "text"
+        },
+        "deviceType": {
+            "label": "Device Emulation",
+            "format": "text"
+        },
+        "responseTimeMs": {
+            "label": "Response Time (ms)",
+            "format": "number"
+        },
+        "timestamp": {
+            "label": "Timestamp",
+            "format": "date"
+        },
+        "crawledDepth": {
+            "label": "Crawl Depth",
+            "format": "number"
+        },
+        "pageTitle": {
+            "label": "Page Title",
+            "format": "text"
+        }
+    },
+    "views": {
+        "overview": {
+            "title": "Traffic Sessions Overview",
+            "description": "Summary of visited pages, status codes, dwell times, and referrers",
+            "transformation": {
+                "fields": [
+                    "timestamp",
+                    "url",
+                    "status",
+                    "dwellTimeSeconds",
+                    "referrer",
+                    "deviceType",
+                    "responseTimeMs",
+                    "pageTitle"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "columns": {
+                    "timestamp": {
+                        "label": "Time",
+                        "format": "date"
+                    },
+                    "url": {
+                        "label": "URL",
+                        "format": "link"
+                    },
+                    "pageTitle": {
+                        "label": "Title"
+                    },
+                    "status": {
+                        "label": "Status"
+                    },
+                    "dwellTimeSeconds": {
+                        "label": "Dwell (s)"
+                    },
+                    "referrer": {
+                        "label": "Referrer"
+                    },
+                    "deviceType": {
+                        "label": "Device"
+                    },
+                    "responseTimeMs": {
+                        "label": "Latency (ms)"
+                    }
+                }
+            }
+        }
+    }
+}

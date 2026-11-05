@@ -1,0 +1,28 @@
+{
+  "name": "traffic-generator",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Apify Actor for website traffic generation, SEO visitor simulation, YouTube views, and stress testing.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "keywords": [
+    "apify",
+    "actor",
+    "traffic-generator",
+    "seo",
+    "pageview-generator",
+    "stress-test",
+    "playwright",
+    "crawlee"
+  ],
+  "author": "Traffic Automation Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "apify": "^3.2.6",
+    "crawlee": "^3.12.2",
+    "playwright": "^1.49.1"
+  }
+}

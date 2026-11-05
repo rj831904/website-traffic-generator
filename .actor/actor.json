@@ -1,0 +1,18 @@
+{
+    "actorSpecification": 1,
+    "name": "traffic-generator",
+    "title": "Website Traffic Generator & Stress Tester (SEO, Views, Dwell Time)",
+    "description": "Simulate organic web traffic, boost pageviews, emulate human browsing behavior, test YouTube video views, and stress-test web infrastructure with proxy support.",
+    "version": "1.0.0",
+    "dockerfile": "./Dockerfile",
+    "readme": "./README.md",
+    "input": "./input_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "categories": [
+        "AUTOMATION",
+        "SEO_TOOLS",
+        "TESTING"
+    ]
+}

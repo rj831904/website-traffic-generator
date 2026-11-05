@@ -1,0 +1,152 @@
+{
+    "title": "Traffic Generator Input Schema",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "startUrls": {
+            "title": "Target URLs",
+            "type": "array",
+            "description": "Enter the websites, blog posts, or YouTube video URLs you want to generate visits for.",
+            "editor": "requestListSources",
+            "prefill": [
+                {
+                    "url": "https://example.com"
+                }
+            ]
+        },
+        "mode": {
+            "title": "Operation Mode",
+            "type": "string",
+            "description": "PAGEVIEW: full Playwright browser simulation with JS, DOM execution, dwell time, and human behavior. STRESS_TEST: high-speed concurrent HTTP requests to benchmark server load.",
+            "editor": "select",
+            "default": "PAGEVIEW",
+            "enum": [
+                "PAGEVIEW",
+                "STRESS_TEST"
+            ],
+            "enumTitles": [
+                "Pageviews (Full Browser, Real Visits & SEO)",
+                "Stress Test (High Throughput & Load Testing)"
+            ]
+        },
+        "pageviewsPerUrl": {
+            "title": "Visits / Pageviews per URL",
+            "type": "integer",
+            "description": "Number of simulated visits to perform for each target URL.",
+            "default": 10,
+            "minimum": 1
+        },
+        "waitOnPage": {
+            "title": "Stay / Dwell Time on Page (seconds)",
+            "type": "integer",
+            "description": "Number of seconds the browser will remain on each page before completing the session. Essential for lowering bounce rate in Google Analytics / GA4.",
+            "default": 15,
+            "minimum": 1
+        },
+        "enableHumanInteraction": {
+            "title": "Enable Natural Human Interaction",
+            "type": "boolean",
+            "description": "Simulates natural user behavior: progressive smooth scrolling, mouse movements, reading pauses, and click simulation.",
+            "default": true
+        },
+        "enableCrawling": {
+            "title": "Enable Internal Page Crawling",
+            "type": "boolean",
+            "description": "When enabled, the Actor will follow internal hyperlinks found on the target page to simulate multi-page user journeys.",
+            "default": false
+        },
+        "crawlingLinkSelector": {
+            "title": "Crawling Link Selector",
+            "type": "string",
+            "description": "CSS selector to locate internal links when crawling is enabled. Default targets all valid anchor tags.",
+            "default": "a[href]",
+            "editor": "textfield"
+        },
+        "maxCrawlDepth": {
+            "title": "Maximum Crawl Depth",
+            "type": "integer",
+            "description": "Maximum number of hops/pages deep the crawler is allowed to navigate from the start URL.",
+            "default": 2,
+            "minimum": 1
+        },
+        "deviceType": {
+            "title": "Device Emulation",
+            "type": "string",
+            "description": "Simulate Desktop or Mobile browsers, or randomize across visits for authentic traffic mix.",
+            "editor": "select",
+            "default": "RANDOM",
+            "enum": [
+                "RANDOM",
+                "DESKTOP",
+                "MOBILE"
+            ],
+            "enumTitles": [
+                "Random Mix (Desktop & Mobile)",
+                "Desktop Only (1920x1080 / 1440x900)",
+                "Mobile Only (iPhone / Android Viewports)"
+            ]
+        },
+        "customReferrers": {
+            "title": "Custom Traffic Referrers",
+            "type": "array",
+            "description": "Referrers passed in the request header and DOM to simulate organic search and social traffic sources in web analytics (GA4, Plausible, Cloudflare, etc.).",
+            "editor": "stringList",
+            "default": [
+                "https://www.google.com/",
+                "https://www.bing.com/",
+                "https://t.co/",
+                "https://www.facebook.com/",
+                "https://www.linkedin.com/",
+                "https://duckduckgo.com/",
+                "https://www.reddit.com/"
+            ]
+        },
+        "enableYoutube": {
+            "title": "YouTube Video Watcher Mode",
+            "type": "boolean",
+            "description": "Specialized simulation for YouTube URLs: handles consent modals, triggers video playback, and maintains watch time.",
+            "default": false
+        },
+        "enableAdvancedFingerprinting": {
+            "title": "Stealth & Anti-Detection Fingerprinting",
+            "type": "boolean",
+            "description": "Uses realistic browser fingerprints, stealth navigator overrides, and blocks WebRTC IP leaks.",
+            "default": true
+        },
+        "blockUrlPatterns": {
+            "title": "Block URL Patterns",
+            "type": "array",
+            "description": "Optional list of resource patterns or extensions to block (e.g. '.jpg', '.png', '.mp4') to save proxy bandwidth in stress-testing mode.",
+            "editor": "stringList",
+            "default": []
+        },
+        "maxConcurrency": {
+            "title": "Max Concurrency",
+            "type": "integer",
+            "description": "Maximum number of parallel browser sessions or concurrent HTTP requests.",
+            "default": 5,
+            "minimum": 1,
+            "maximum": 50
+        },
+        "endAfterSeconds": {
+            "title": "Kill Switch / Run Timeout (seconds)",
+            "type": "integer",
+            "description": "Maximum run time in seconds before gracefully shutting down. Set to 0 to let the Actor finish all requested pageviews naturally.",
+            "default": 0,
+            "minimum": 0
+        },
+        "proxy": {
+            "title": "Proxy Configuration",
+            "type": "object",
+            "description": "Select Apify Proxy (Residential or Datacenter) or custom proxies for IP rotation and geolocation diversity.",
+            "editor": "proxy",
+            "default": {
+                "useApifyProxy": true
+            }
+        }
+    },
+    "required": [
+        "startUrls",
+        "mode"
+    ]
+}
