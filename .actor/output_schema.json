@@ -1,0 +1,17 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Website Traffic Generator Output",
+    "description": "Dataset containing verified pageviews, HTTP status codes, dwell times, and referrers.",
+    "properties": {
+        "trafficDataset": {
+            "title": "Visited Sessions Dataset",
+            "type": "string",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?clean=true&format=json"
+        },
+        "summary": {
+            "title": "Execution Summary",
+            "type": "string",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+        }
+    }
+}
